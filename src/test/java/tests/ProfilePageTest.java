@@ -10,6 +10,8 @@ import locators.LoginPage;
 import locators.MainPage;
 import locators.ProfilePage;
 
+import static constants.Errors.*;
+
 public class ProfilePageTest {
 
     @Rule
@@ -39,6 +41,8 @@ public class ProfilePageTest {
         mainPage.waitForLoad();
         mainPage.clickEnterProfileLink();
         loginPage.waitForLoad();
+
+        Assert.assertTrue(PROFILE_LNK_NOT_WORK, loginPage.isEnterHeaderVisible());
     }
 
     @Test
@@ -51,6 +55,8 @@ public class ProfilePageTest {
         Thread.sleep(10000);
         loginPage.clickLogoButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(LOGO_BUT_NOT_WORK, mainPage.isCreateOrderHeaderVisible());
     }
 
     @Test
@@ -62,6 +68,8 @@ public class ProfilePageTest {
         loginPage.waitForLoad();
         loginPage.clickConstructorButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(CONSTR_BUT_NOT_WORK, mainPage.isCreateOrderHeaderVisible());
     }
 
     @Test
@@ -79,6 +87,8 @@ public class ProfilePageTest {
         profilePage.waitForLoad();
         profilePage.clickLogoutButton();
         loginPage.waitForLoad();
+
+        Assert.assertTrue(LOGO_BUT_NOT_WORK, loginPage.isEnterHeaderVisible());
     }
 
     @After

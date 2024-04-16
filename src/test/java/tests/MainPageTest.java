@@ -2,10 +2,13 @@ package tests;
 
 import io.qameta.allure.junit4.DisplayName;
 import locators.MainPage;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+
+import static constants.Errors.*;
 
 public class MainPageTest {
 
@@ -25,6 +28,8 @@ public class MainPageTest {
         mainPage.openMainPage();
         mainPage.waitForLoad();
         mainPage.clickSauceButton();
+
+        Assert.assertTrue(SAUCE_BUT_NOT_WORK, mainPage.isSauceSectionSelected());
     }
 
     @Test
@@ -34,6 +39,8 @@ public class MainPageTest {
         mainPage.waitForLoad();
         mainPage.clickSauceButton();
         mainPage.clickBunButton();
+
+        Assert.assertTrue(BUN_BUT_NOT_WORK, mainPage.isBunSectionSelected());
     }
 
     @Test
@@ -42,5 +49,7 @@ public class MainPageTest {
         mainPage.openMainPage();
         mainPage.waitForLoad();
         mainPage.clickFillingButton();
+
+        Assert.assertTrue(FILL_BUT_NOT_WORK, mainPage.isFillingSectionSelected());
     }
 }

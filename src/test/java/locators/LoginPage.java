@@ -13,6 +13,7 @@ public class LoginPage extends WaitPage {
     private final By constructorButton = By.xpath("//p[text() = 'Конструктор']");
     private final By logoButton = By.xpath("//*[@id=\"root\"]/div/header/nav/div/a");
     private final By enterButton = By.xpath("//button[text() = 'Войти']");
+    private final By enterHeader = By.xpath("//h2[text() = 'Вход']");
 
 
     public LoginPage(WebDriver webDriver) {
@@ -44,6 +45,11 @@ public class LoginPage extends WaitPage {
     public void enterLoginData(String email, String password) {
         enterEmail(email);
         enterPassword(password);
+    }
+
+    @Step("Проверка видимости элемента")
+    public boolean isEnterHeaderVisible() {
+        return webDriver.findElement(enterHeader).isDisplayed();
     }
 
     @Step("Ввод пароля")

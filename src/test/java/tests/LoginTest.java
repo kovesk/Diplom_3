@@ -10,6 +10,8 @@ import locators.LoginPage;
 import locators.MainPage;
 import locators.RegistrationPage;
 
+import static constants.Errors.*;
+
 public class LoginTest {
 
     @Rule
@@ -44,6 +46,8 @@ public class LoginTest {
         loginPage.enterLoginData(userCreds.getEmail(), userCreds.getPassword());
         loginPage.clickEnterButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(LOG_BUT_FAIL, mainPage.isOrderButtonVisible());
     }
 
     @Test
@@ -56,6 +60,8 @@ public class LoginTest {
         loginPage.enterLoginData(userCreds.getEmail(), userCreds.getPassword());
         loginPage.clickEnterButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(LOG_BUT_FAIL, mainPage.isOrderButtonVisible());
     }
 
     @Test
@@ -72,6 +78,8 @@ public class LoginTest {
         loginPage.enterLoginData(userCreds.getEmail(), userCreds.getPassword());
         loginPage.clickEnterButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(LOG_REG_FAIL, mainPage.isOrderButtonVisible());
     }
 
     @Test
@@ -88,6 +96,8 @@ public class LoginTest {
         loginPage.enterLoginData(userCreds.getEmail(), userCreds.getPassword());
         loginPage.clickEnterButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(LOG_PASS_FAIL, mainPage.isOrderButtonVisible());
     }
 
     @After

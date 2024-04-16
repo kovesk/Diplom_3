@@ -10,6 +10,9 @@ import locators.LoginPage;
 import locators.MainPage;
 import locators.RegistrationPage;
 
+import static constants.Errors.INVALID_PASS;
+import static constants.Errors.SUC_REG_FAIL;
+
 public class RegistrationTest {
 
     @Rule
@@ -47,6 +50,8 @@ public class RegistrationTest {
         loginPage.enterLoginData(userCreds.getEmail(), userCreds.getPassword());
         loginPage.clickEnterButton();
         mainPage.waitForLoad();
+
+        Assert.assertTrue(SUC_REG_FAIL, mainPage.isOrderButtonVisible());
     }
 
     @Test
@@ -66,6 +71,9 @@ public class RegistrationTest {
                 CredsGenerator.randomPassword(maxInvalidPasswordLength)
         );
         registrationPage.clickRegisterButton();
+
+        Assert.assertTrue(INVALID_PASS,
+                registrationPage.isIncorrectPasswordLabelVisible());
     }
 
     @After
